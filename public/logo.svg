@@ -1,0 +1,6 @@
+<svg width="160" height="48" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="14" fill="#111111"/>
+  <path d="M15 31C18 21 27 15 38 15C35 26 28 33 15 31Z" fill="#D6A84F"/>
+  <path d="M24 17V35" stroke="#F7F1E6" stroke-width="3" stroke-linecap="round"/>
+  <text x="58" y="32" fill="#F7F1E6" font-family="Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="0">FLAVRE</text>
+</svg>
