@@ -6,7 +6,6 @@ import { ArrowUpLeft, Clock, Eye, Flame, Plus, Star } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MotionDiv } from "@/components/ui/motion";
 import { cn, formatPrice } from "@/lib/utils";
 import { useAppStore } from "@/store/use-app-store";
 import type { Product } from "@/types";
@@ -34,14 +33,7 @@ export function ProductCard({
   }
 
   return (
-    <MotionDiv
-      initial={{ opacity: 0, y: 20, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      whileHover={{ y: -8 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.38, delay: Math.min(index * 0.035, 0.22) }}
-      className={cn("h-full", spotlight && "xl:col-span-2")}
-    >
+    <div className={cn("h-full transition-transform duration-200 md:hover:-translate-y-2", spotlight && "xl:col-span-2")}>
       <Card
         className={cn(
           "group relative isolate grid h-full min-h-[470px] overflow-hidden rounded-lg border-white/12 bg-black/30 p-0 transition-all duration-500 hover:border-[rgb(var(--accent)/0.34)] hover:shadow-[0_34px_110px_rgb(var(--glow)/0.2)]",
@@ -127,6 +119,6 @@ export function ProductCard({
           </div>
         </div>
       </Card>
-    </MotionDiv>
+    </div>
   );
 }

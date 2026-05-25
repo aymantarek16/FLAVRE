@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
 import { CakeSlice, CupSoda, Flame, Search, ShoppingBag, SlidersHorizontal, Sparkles, Star, Utensils, X, type LucideIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -73,7 +72,7 @@ export function MenuBrowser({ featuredOnly = false, initialCategory = "all" }: {
                       active ? "text-black" : "border border-white/10 bg-white/5 text-[rgb(var(--muted))] hover:text-[rgb(var(--text))]",
                     )}
                   >
-                    {active && <motion.span layoutId="sort-pill" className="absolute inset-0 rounded-full bg-[rgb(var(--accent))]" />}
+                    {active && <span className="absolute inset-0 rounded-full bg-[rgb(var(--accent))]" />}
                     <span className="relative inline-flex items-center gap-2">
                       {option.value === "featured" && <SlidersHorizontal size={15} />}
                       {option.label}
@@ -125,20 +124,18 @@ export function MenuBrowser({ featuredOnly = false, initialCategory = "all" }: {
         </div>
       )}
 
-      <motion.div layout className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        <AnimatePresence>
-          {filtered.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              index={index}
-              onPreview={setPreviewProduct}
-              spotlight={!featuredOnly && index === 0}
-              priorityImage={!featuredOnly && index < 3}
-            />
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        {filtered.map((product, index) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            index={index}
+            onPreview={setPreviewProduct}
+            spotlight={!featuredOnly && index === 0}
+            priorityImage={!featuredOnly && index < 3}
+          />
+        ))}
+      </div>
       {filtered.length === 0 && <p className="rounded-lg border border-white/10 p-8 text-center text-[rgb(var(--muted))]">لا توجد منتجات مطابقة.</p>}
       <ProductPreviewModal product={previewProduct} onClose={() => setPreviewProduct(null)} />
     </section>
@@ -157,22 +154,15 @@ function ProductPreviewModal({ product, onClose }: { product: Product | null; on
   }
 
   return (
-    <AnimatePresence>
+    <>
       {product && firstVariant && (
-        <motion.div
+        <div
           className="fixed inset-0 z-[70] grid place-items-center bg-black/70 p-4 backdrop-blur-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
           onClick={onClose}
         >
-          <motion.div
+          <div
             role="dialog"
             aria-modal="true"
-            initial={{ opacity: 0, y: 24, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 18, scale: 0.98 }}
-            transition={{ duration: 0.24 }}
             className="glass max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-lg"
             onClick={(event) => event.stopPropagation()}
           >
@@ -212,9 +202,9 @@ function ProductPreviewModal({ product, onClose }: { product: Product | null; on
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

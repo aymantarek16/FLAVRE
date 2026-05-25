@@ -5,7 +5,6 @@ import { Footer } from "@/components/sections/footer";
 import { Navbar } from "@/components/sections/navbar";
 import { AnimatedBackground } from "@/components/layout/AnimatedBackground";
 import { NavigationLoader } from "@/components/layout/NavigationLoader";
-import { PageTransition } from "@/components/ui/page-transition";
 import { ThemeHydrator } from "@/components/ui/theme-hydrator";
 import "./globals.css";
 
@@ -25,7 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <AnimatedBackground />
         <Navbar />
         <main className="relative z-10 min-h-screen pt-24">
-          <PageTransition>{children}</PageTransition>
+          {children}
         </main>
         <Footer />
         <NavigationLoader />

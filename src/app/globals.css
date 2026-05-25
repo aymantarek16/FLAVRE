@@ -165,11 +165,9 @@ select option {
   width: 58vmax;
   height: 34vmax;
   border-radius: 48%;
-  opacity: 0.2;
-  filter: blur(30px);
+  opacity: 0.16;
+  filter: blur(24px);
   transform: translate3d(0, 0, 0);
-  animation: cinema-drift 22s ease-in-out infinite alternate;
-  will-change: transform;
 }
 
 .cinema-glow-gold {
@@ -182,7 +180,6 @@ select option {
   left: -20vmax;
   bottom: -10vmax;
   background: radial-gradient(ellipse at center, rgb(244 92 38 / 0.65), transparent 68%);
-  animation-duration: 28s;
 }
 
 .cinema-glow-wine {
@@ -191,8 +188,6 @@ select option {
   width: 38vmax;
   height: 28vmax;
   background: radial-gradient(ellipse at center, rgb(136 35 29 / 0.44), transparent 70%);
-  animation-duration: 32s;
-  animation-delay: -8s;
 }
 
 .cinema-pattern {
@@ -237,6 +232,22 @@ select option {
   }
   100% {
     transform: translate3d(4vmax, -2vmax, 0) rotate(8deg) scale(1.04);
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .cinema-glow {
+    animation: cinema-drift 28s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .cinema-glow-ember {
+    animation-duration: 34s;
+  }
+
+  .cinema-glow-wine {
+    animation-duration: 38s;
+    animation-delay: -8s;
   }
 }
 
@@ -362,11 +373,20 @@ select option {
 }
 
 @media (max-width: 768px) {
-  .cinema-glow-wine {
+  .cinema-glow,
+  .cinema-noise {
     display: none;
   }
 
-  .cinema-glow {
-    filter: blur(24px);
+  .cinema-pattern {
+    opacity: 0.04;
+  }
+
+  .glass,
+  .backdrop-blur,
+  .backdrop-blur-sm,
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
