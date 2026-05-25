@@ -1,8 +1,10 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import { RouteSpinner } from "@/components/ui/route-spinner";
 
 export default function MenuLoading() {
   return (
     <section className="container-page space-y-6 pb-16">
+      <RouteSpinner className="py-8" />
       <div className="space-y-3">
         <Skeleton className="h-14 w-48" />
         <Skeleton className="h-5 w-full max-w-2xl" />

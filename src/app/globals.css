@@ -356,9 +356,34 @@ select option {
   }
 }
 
+.route-spinner {
+  display: inline-block;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 3px solid rgb(var(--accent) / 0.22);
+  border-top-color: rgb(var(--accent));
+  border-right-color: rgb(var(--accent-2));
+  border-radius: 999px;
+  box-shadow: 0 0 24px rgb(var(--glow) / 0.28);
+  animation: route-spin 0.72s linear infinite;
+}
+
+.route-spinner-sm {
+  width: 1.55rem;
+  height: 1.55rem;
+  border-width: 2px;
+}
+
+@keyframes route-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cinema-glow,
-  .steam-wisp {
+  .steam-wisp,
+  .route-spinner {
     animation: none;
   }
 
